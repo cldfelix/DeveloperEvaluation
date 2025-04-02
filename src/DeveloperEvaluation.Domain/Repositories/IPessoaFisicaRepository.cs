@@ -1,4 +1,4 @@
-using Domain.Entities;
+using DeveloperEvaluation.Domain.Entities;
 
 namespace DeveloperEvaluation.Domain.Repositories;
 

@@ -17,8 +17,6 @@ namespace DeveloperEvaluation.Application.PessoaFisica.Create
             RuleFor(p => p.DataNascimento).NotEmpty().WithMessage("Campo obrigatorio");
             RuleFor(p => p.Telefone).NotEmpty().WithMessage("Campo obrigatorio");
             RuleFor(p => p.Email).NotEmpty().WithMessage("Campo obrigatorio");
-
-            RuleFor(p => p.Cpf).Length(11).WithMessage("Camppo obrigatorio no formato xxxxxxxxxxx com 11 caracteres");
             RuleFor(p => p.Nome).NotEmpty().WithMessage("Campo obrigatorio");
 
         }

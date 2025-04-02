@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities
+namespace DeveloperEvaluation.Domain.Entities
 {
     public class PessoaFisica
     {

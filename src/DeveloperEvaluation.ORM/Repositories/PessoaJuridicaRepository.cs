@@ -1,28 +1,65 @@
+using DeveloperEvaluation.Domain.Entities;
 using DeveloperEvaluation.Domain.Repositories;
-using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace DeveloperEvaluation.ORM.Repositories;
 
 public class PessoaJuridicaRepository : IPessoaJuridicaRepository
 {
-    public Task<PessoaJuridica> CreateAsync(PessoaJuridica pessoaJuridica, CancellationToken cancellationToken = default)
+    private readonly DefaultContext _context;
+
+    public PessoaJuridicaRepository(DefaultContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
     }
-    public Task<PessoaJuridica> UpdateAsync(string cnpj, PessoaJuridica pessoaJuridica, CancellationToken cancellationToken = default)
+
+    public async Task<PessoaJuridica> CreateAsync(PessoaJuridica pessoaJuridica, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        await _context.PessoaJuridicas.AddAsync(pessoaJuridica, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+        return pessoaJuridica;
+
     }
-    public Task<PessoaJuridica?> GetByIdAsync(string cnpj, CancellationToken cancellationToken = default)
+    public async Task<bool> UpdateAsync(Guid id, PessoaJuridica pessoaJuridica, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var p = await _context.PessoaJuridicas.FindAsync(id, cancellationToken);
+        if (p is null)
+        {
+            throw new Exception("Pessoa não encontrada");
+        }
+
+        _context.PessoaJuridicas.Update(pessoaJuridica);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
+
     }
-    public Task<IEnumerable<PessoaJuridica>> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<PessoaJuridica?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+       return await _context.PessoaJuridicas.FindAsync(id, cancellationToken);
     }
-    public Task<bool> DeleteAsync(string cnpj, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<PessoaJuridica>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await _context.PessoaJuridicas.ToListAsync(cancellationToken);
+    }
+    public async Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        var p = await _context.PessoaJuridicas.FindAsync(id, cancellationToken);
+        if (p is null)
+        {
+            return false;
+        }
+        _context.PessoaJuridicas.Remove(p);
+        await _context.SaveChangesAsync(cancellationToken);
+        return true;
+    }
+
+    public async Task<bool> GetByEmailAsync(string email, CancellationToken cancellationToken)
+    {
+        return await _context.PessoaJuridicas.AnyAsync(x => x.Email == email, cancellationToken);
+    }
+
+    public async Task<bool> GetByInscricaoAsync(string inscricao, CancellationToken cancellationToken)
+    {
+        return await _context.PessoaJuridicas.AnyAsync(x => x.InscricaoEstadual == inscricao, cancellationToken);
     }
 }

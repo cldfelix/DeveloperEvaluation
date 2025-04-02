@@ -7,7 +7,7 @@ public class GetListPessoaFisicaProfile : Profile
 {
     public GetListPessoaFisicaProfile()
     {
-        CreateMap<IEnumerable<global::Domain.Entities.PessoaFisica>, GetListPessoaFisicaResult>()
+        CreateMap<IEnumerable<global::DeveloperEvaluation.Domain.Entities.PessoaFisica>, GetListPessoaFisicaResult>()
             .ForMember(dest => dest.ListPessoaFisicaResults, opt => opt.MapFrom(src => src));       
 
 

@@ -16,11 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PessoaJuridica\Create\" />
     <Folder Include="PessoaJuridica\Delete\" />
     <Folder Include="PessoaJuridica\GetAll\" />
     <Folder Include="PessoaJuridica\Get\" />
-    <Folder Include="PessoaJuridica\Update\" />
   </ItemGroup>
 
 </Project>

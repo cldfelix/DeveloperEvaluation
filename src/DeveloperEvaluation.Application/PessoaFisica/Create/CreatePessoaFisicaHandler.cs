@@ -33,7 +33,7 @@ public class CreatePessoaFisicaHandler : IRequestHandler<CreatePessoaFisicaComma
         }
 
 
-        var product = _mapper.Map<global::Domain.Entities.PessoaFisica>(command);
+        var product = _mapper.Map<global::DeveloperEvaluation.Domain.Entities.PessoaFisica>(command);
         var createdProduct = await _repository.CreateAsync(product, cancellationToken);
         var result = _mapper.Map<CreatePessoaFisicaResult>(createdProduct);
         return result;

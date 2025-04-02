@@ -7,7 +7,7 @@ public class UpdatePessoaFisicaProfile : Profile
 {
     public UpdatePessoaFisicaProfile()
     {
-        CreateMap<UpdatePessoaFisicaCommand, global::Domain.Entities.PessoaFisica>();
-        CreateMap<global::Domain.Entities.PessoaFisica, UpdatePessoaFisicaResult>();
+        CreateMap<UpdatePessoaFisicaCommand, global::DeveloperEvaluation.Domain.Entities.PessoaFisica>();
+        CreateMap<global::DeveloperEvaluation.Domain.Entities.PessoaFisica, UpdatePessoaFisicaResult>();
     }
 }

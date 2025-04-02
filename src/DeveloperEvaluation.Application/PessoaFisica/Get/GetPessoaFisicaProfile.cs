@@ -6,6 +6,6 @@ public class GetPessoaFisicaProfile : Profile
 {
     public GetPessoaFisicaProfile()
     {
-        CreateMap<global::Domain.Entities.PessoaFisica, GetPessoaFisicaResult>();
+        CreateMap<global::DeveloperEvaluation.Domain.Entities.PessoaFisica, GetPessoaFisicaResult>();
     }
 }

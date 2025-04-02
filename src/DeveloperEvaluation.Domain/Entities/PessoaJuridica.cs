@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities
+namespace DeveloperEvaluation.Domain.Entities
 {
     public class PessoaJuridica
     {
         [Key]
-        public string Cnpj { get; set; }
+        public Guid Id { get; set; }
         public string RazaoSocial { get; set; }
-        public string InscricaoEstadual { get; set; } // este ou isento
+        public string? InscricaoEstadual { get; set; } 
         public bool Isento { get; set; }
         public string Cep { get; set; }
         public string Rua { get; set; }

@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
+using DeveloperEvaluation.Domain.Entities;
 using DeveloperEvaluation.Domain.Repositories;
-using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Pipelines.Sockets.Unofficial.Arenas;
 
@@ -25,9 +25,8 @@ public class PessoaFisicaRepository : IPessoaFisicaRepository
     {
        var pessoa = await _context.PessoaFisicas.FindAsync(cpf, cancellationToken);
        if (pessoa is null) return false;
-       
-       pessoa.Nome = pessoaFisica.Nome;
 
+       _context.PessoaFisicas.Update(pessoaFisica);
        await _context.SaveChangesAsync(cancellationToken);
 
        return true;
